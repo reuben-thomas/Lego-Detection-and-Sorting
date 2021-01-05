@@ -1,0 +1,41 @@
+name: opencv
+channels:
+  - defaults
+dependencies:
+  - astroid=2.3.2=py36_0
+  - certifi=2019.9.11=py36_0
+  - colorama=0.4.1=py36_0
+  - isort=4.3.21=py36_0
+  - lazy-object-proxy=1.4.2=py36he774522_0
+  - mccabe=0.6.1=py36_1
+  - pip=19.3.1=py36_0
+  - pylint=2.4.3=py36_0
+  - python=3.6.9=h5500b2f_0
+  - setuptools=41.6.0=py36_0
+  - six=1.12.0=py36_0
+  - sqlite=3.30.1=he774522_0
+  - typed-ast=1.4.0=py36he774522_0
+  - vc=14.1=h0510ff6_4
+  - vs2015_runtime=14.16.27012=hf0eaf9b_0
+  - wheel=0.33.6=py36_0
+  - wincertstore=0.2=py36h7fe50ca_0
+  - wrapt=1.11.2=py36he774522_0
+  - pip:
+    - bottle==0.12.17
+    - bottle-websocket==0.2.9
+    - cffi==1.13.2
+    - cycler==0.10.0
+    - eel==0.11.0
+    - future==0.18.2
+    - gevent==1.4.0
+    - gevent-websocket==0.10.1
+    - greenlet==0.4.15
+    - kiwisolver==1.1.0
+    - matplotlib==3.1.1
+    - numpy==1.17.3
+    - opencv-contrib-python==4.1.1.26
+    - opencv-python==4.1.1.26
+    - pycparser==2.19
+    - pyparsing==2.4.5
+    - python-dateutil==2.8.1
+    - whichcraft==0.6.1

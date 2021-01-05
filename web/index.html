@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Assignment 1</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+    <link href="style.css" rel="stylesheet">
+</head>
+
+<body style="background-color:rgb(52,58,64);">
+    <!--Container 1-->
+    <div class="container-sm|md|lg|xl bg-dark text-light px-3">
+
+        <div class="row ">
+            <div class="col-md-5 my-auto">
+                <h1 class="display-4 ">Lego Detection</h1>
+                <p>This program demonstrates detection and sorting of lego bricks using OpenCV</p>
+
+                <h6 id="p1">Please Select Video</h6>
+                                         
+                <!--Video Selection-->
+                <div class="row my-3 mx-0">
+                    <div class="btn-group">
+                        <div class="btn-group">
+                          <button type="button" id="selected_video" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">Selection<span class="caret"></span></button>
+                          
+                          <div id="dropdownMenu" class="dropdown-menu dropdown-multicol2 bg-light" aria-labelledby="dropdownMenuButton">
+                            <div class="dropdown-col">
+                                <div class="dropdown-header">Level 1</div>
+                                <a class="dropdown-item" data-value="1" href="#">brick1_01</a>
+                                <a class="dropdown-item" data-value="2" href="#">brick1_02</a>
+                                <a class="dropdown-item" data-value="3" href="#">brick1_03</a>
+                                <a class="dropdown-item" data-value="4" href="#">brick1_04</a>
+                                <a class="dropdown-item" href="#">brick1_05</a>
+                                <a class="dropdown-item" href="#">brick1_06</a>
+                                <a class="dropdown-item" href="#">brick1_07</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <div class="dropdown-header">Level 2</div>
+                                <a class="dropdown-item" href="#">brick3_08</a>
+                                <a class="dropdown-item" href="#">brick3_09</a>
+                                <a class="dropdown-item" href="#">brick3_10</a>
+                                <a class="dropdown-item" href="#">brick3_11</a>
+                                <a class="dropdown-item" href="#">brick3_12</a>
+                                <a class="dropdown-item" href="#">brick3_13</a>
+                            </div>
+                            <div class="dropdown-col">
+                                <div class="dropdown-header">Level 3</div>
+                                <a class="dropdown-item" href="#">brick6_14</a>
+                                <a class="dropdown-item" href="#">brick6_15</a>
+                                <a class="dropdown-item" href="#">brick6_16</a>
+                                <a class="dropdown-item" href="#">brick6_17</a>
+                                <a class="dropdown-item" href="#">brick6_18</a>
+                                <a class="dropdown-item" href="#">brick6_19</a>
+                            </div>
+                        </div>
+
+                        </div>
+                        <button onclick="eel.video_feed()" id="btn1" type="button" class="btn btn-primary">Start Video</button>
+                    </div>  
+                    <button onclick="eel.stop_video_feed()" id="btn2" type="button" class="btn mx-2 btn-warning">Pause</button>
+                    <button onclick="eel.reset_count()" id="btn4" type="button" class="btn btn-info">Reset</button>            
+                </div>
+
+
+                <h6 >Output Mode</h6>
+                <div class="row mt-0 mb-3 mx-0">                    
+                    <div class="btn-group" id="disp_mode">
+                        <button onclick="eel.set_input()" type="button" value="input" class="btn btn-outline-secondary">Input</button>
+                        <button onclick="eel.set_segmentation()" type="button" value="segmentation" class="btn btn-outline-secondary">Segmentation</button>
+                        <button onclick="eel.set_contours()" type="button" value="contour" class="btn btn-outline-secondary">Contour</button>                        
+                        <button onclick="eel.set_detection()" type="button" value="detection" class=" active btn btn-outline-secondary">Detection</button>
+                    </div>
+                </div>
+
+                <h6 >Count Mode</h6>
+                <div class="row mt-0 mb-3 mx-0">                    
+                    <div class="btn-group" id="disp_mode">
+                        <button onclick="eel.set_current()" type="button" value="input" class="active btn btn-outline-secondary">Current</button>
+                        <button onclick="eel.set_total()" type="button" value="segmentation" class="btn btn-outline-secondary">Video Total</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5 p-3 my-auto">
+                <img id="output" class="img" src="./image/loading.gif">
+            </div>
+
+        </div>    
+    </div>
+
+
+
+    <!--Container 2 Results-->
+    <div class="container-sm|md|lg|xl p-3 text-light font-italic bg-secondary">
+        <div class="row">
+
+            <!--Column Left-->
+            <div class="col small-result">
+                <table>
+                    <tr>
+                        <td id="2x2 Green" class="font-weight-bold">0 x</th> 
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x2g.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x2 Orange" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x2o.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x2 Yellow" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x2y.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x3 Yellow" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x3y.png">
+                        </td>
+                    </tr>       
+                </table>
+            </div>
+
+            <!--Column Mid-->
+            <div class="col med-result">
+                <table>
+                    <tr>
+                        <td id="2x4 Green" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x4g.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x4 Orange" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x4o.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x4 Yellow" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x4y.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x4 Gray" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x4grey.png">
+                        </td>
+                    </tr>    
+                </table>
+            </div>
+
+            <!--Column Right-->
+            <div class="col long-result">
+                <table>
+                    <tr>
+                        <td id="2x4 Blue" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x4b.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="4x6 Blue" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/4x6b.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x8 Gray" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x8grey.png">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td id="2x8 Green" class="font-weight-bold">0 x</th>
+                        <td>
+                            <img class="img-fluid m-2" src="./image/icons/2x8g.png">
+                        </td>
+                    </tr>                    
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+
+</body>
+
+</html>

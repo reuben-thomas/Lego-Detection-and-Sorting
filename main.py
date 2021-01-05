@@ -21,17 +21,22 @@ def setup():
 @eel.expose
 def video_feed():
   option=eel.get_Value("selected_video")()
-  if option=="Selection":
-    text_send_to_js("Please select a video", "p1")
-  else:
-    video_name = "./web/image/video/" + str(option) + ".mp4"
-    text_send_to_js("Selected Video: " + option, "p1")
+  video_name = "./web/image/video/" + str(option) + ".mp4"
+
+  try:
     x.switch_video(video_name)
+    text_send_to_js("Selected Video: " + option, "p1")
     y = x.process()
- 
+    text_send_to_js("Restart", "btn1")
+
     for frame in y:
       img_send_to_js(frame, "output")
+    text_send_to_js("Video Complete", "p1")
+    text_send_to_js("Start Video", "btn1")
 
+  except:
+    text_send_to_js("Start", "btn1")
+    text_send_to_js("Please select a video", "p1")
 
 @eel.expose
 def set_input():

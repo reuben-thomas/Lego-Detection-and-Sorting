@@ -51,11 +51,11 @@ function get_Value(id) {
 }
 
 $(function(){
-
+ 
   $(".dropdown-menu a").click(function(){
-
-    $('#selected_video').text($(this).text());
-    $('#selected_video').val($(this).text());
+  $('#selected_video').text($(this).text());
+  $('#selected_video').val($(this).text());
+  $('#btn1').text('Start Video');
 
  });
 });
@@ -83,4 +83,8 @@ function get_Option(output) {
 
 $(document).ready(function(){
   $('[data-toggle="popover"]').popover();
+});
+
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
 });

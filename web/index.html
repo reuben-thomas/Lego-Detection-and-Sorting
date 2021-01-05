@@ -19,7 +19,7 @@
     <div class="container-sm|md|lg|xl bg-dark text-light px-3">
 
         <div class="row ">
-            <div class="col-md-5 my-auto">
+            <div class="col-md-6 my-auto">
                 <h1 class="display-4 ">Lego Detection</h1>
                 <p>This program demonstrates detection and sorting of lego bricks using OpenCV</p>
 
@@ -29,7 +29,7 @@
                 <div class="row my-3 mx-0">
                     <div class="btn-group">
                         <div class="btn-group">
-                          <button type="button" id="selected_video" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown">Selection<span class="caret"></span></button>
+                          <button type="button" id="selected_video" class="btn btn-outline-primary dropdown-toggle" value="Selection" data-toggle="dropdown">Selection<span class="caret"></span></button>
                           
                           <div id="dropdownMenu" class="dropdown-menu dropdown-multicol2 bg-light" aria-labelledby="dropdownMenuButton">
                             <div class="dropdown-col">
@@ -66,7 +66,7 @@
                         <button onclick="eel.video_feed()" id="btn1" type="button" class="btn btn-primary">Start Video</button>
                     </div>  
                     <button onclick="eel.stop_video_feed()" id="btn2" type="button" class="btn mx-2 btn-warning">Pause</button>
-                    <button onclick="eel.reset_count()" id="btn4" type="button" class="btn btn-info">Reset</button>            
+                    <button onclick="eel.reset_count()" id="btn4" type="button" class="btn btn-info" data-toggle="tooltip" title="Reset total video counter">Reset</button>            
                 </div>
 
 
@@ -75,7 +75,7 @@
                     <div class="btn-group" id="disp_mode">
                         <button onclick="eel.set_input()" type="button" value="input" class="btn btn-outline-secondary">Input</button>
                         <button onclick="eel.set_segmentation()" type="button" value="segmentation" class="btn btn-outline-secondary">Segmentation</button>
-                        <button onclick="eel.set_contours()" type="button" value="contour" class="btn btn-outline-secondary">Contour</button>                        
+                        <button onclick="eel.set_contours()" type="button" value="contour" class="btn btn-outline-secondary" data-toggle="tooltip" title="A = Area, AR = Aspect Ratio">Contour</button>                        
                         <button onclick="eel.set_detection()" type="button" value="detection" class=" active btn btn-outline-secondary">Detection</button>
                     </div>
                 </div>
@@ -83,8 +83,8 @@
                 <h6 >Count Mode</h6>
                 <div class="row mt-0 mb-3 mx-0">                    
                     <div class="btn-group" id="disp_mode">
-                        <button onclick="eel.set_current()" type="button" value="input" class="active btn btn-outline-secondary">Current</button>
-                        <button onclick="eel.set_total()" type="button" value="segmentation" class="btn btn-outline-secondary">Video Total</button>
+                        <button onclick="eel.set_current()" type="button" value="input" class="active btn btn-outline-secondary" data-toggle="tooltip" title="Count detections currently in frame">Current</button>
+                        <button onclick="eel.set_total()" type="button" value="segmentation" class="btn btn-outline-secondary" data-toggle="tooltip" title="Count total detections in video">Video Total</button>
                     </div>
                 </div>
             </div>

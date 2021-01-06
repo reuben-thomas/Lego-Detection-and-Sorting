@@ -69,18 +69,6 @@ def set_total():
 def reset_count():
   x.reset_count()
 
-'''
-@eel.expose
-def dispDetections():
-  if x.display == "Current":
-    detections = x.current_detections
-  else:
-    detections = x.video_detections
-
-  for part in detections:
-    eel.updateTextSrc(str(detections[part]) + " x ",part)() 
-'''
-
 @eel.expose
 def stop_video_feed():
   state=eel.get_Value("btn2")()

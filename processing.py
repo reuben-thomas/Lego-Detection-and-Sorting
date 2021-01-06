@@ -156,11 +156,7 @@ class VideoProcessing:
         aspect_ratio = min(width, height) / max(width, height)
         box = cv2.boxPoints(rect)
         box = np.int0(box)
-        cv2.drawContours(frame,[box],0,outline_code,2)   
 
-        '''cv2.putText(frame, "No ID " + str(area) + " " + str(round(aspect_ratio, 2)) + " " + color, (x, y), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 0))
-        part = None'''
-    
         if aspect_ratio > 0.8 and 2500 < area < 6000 and (color == "Green" or color == "Orange" or color == "Yellow"):
           part = "2x2 " + color 
         elif 0.4 < aspect_ratio < 0.62 and 4500 < area < 9500:
@@ -174,7 +170,6 @@ class VideoProcessing:
         else:
           part = None
 
-
         if part != None:
           cv2.drawContours(frame,[box],0,outline_code,2)   
           self.current_detections[part] = self.current_detections[part] + 1  
@@ -185,7 +180,6 @@ class VideoProcessing:
         else:
           cv2.drawContours(frame,[box],0,(0,0,255),2)   
           cv2.putText(frame, "No ID " + str(area) + " " + str(round(aspect_ratio, 2)) + " " + color, (x, y), cv2.FONT_HERSHEY_PLAIN, 1, (0, 0, 255))
-
 
     return frame
 
